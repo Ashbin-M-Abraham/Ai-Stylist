@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Stylist Results</title>
+    <link href="styles.css" rel="stylesheet">
+    <style>
+        .result-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+        .result-text, .result-image {
+            flex: 1;
+            margin: 20px;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.6);
+            color: white;
+            border-radius: 10px;
+        }
+        .result-text {
+            max-width: 45%;
+        }
+        .result-image img {
+            max-width: 100%;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="result-container">
+        <div class="result-text">
+            <h2>What to Wear:</h2>
+            <p id="suggestion"></p>
+        </div>
+        <div class="result-image">
+            <h2>Your Outfit:</h2>
+            <img id="outfitImage" alt="Generated Outfit">
+        </div>
+    </div>
+
+    <<script>
+        const params = new URLSearchParams(window.location.search);
+        const suggestion = params.get('suggestion');
+        const imageUrl = params.get('imageUrl');
+    
+        if (suggestion && imageUrl) {
+            document.getElementById('suggestion').textContent = suggestion;
+            document.getElementById('outfitImage').src = imageUrl;
+        } else {
+            alert('No data available. Please go back and try again.');
+        }
+    </script>
+    
+</body>
+</html>
